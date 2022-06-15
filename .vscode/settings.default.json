@@ -4,5 +4,6 @@
     "python.formatting.provider": "black",
     // https://code.visualstudio.com/docs/python/testing#_pytest-configuration-settings
     "python.testing.pytestEnabled": false,
-    "python.envFile": "${workspaceFolder}/local.env"
+    "python.envFile": "${workspaceFolder}/local.env",
+    "python.linting.banditEnabled": true
 }

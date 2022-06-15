@@ -49,7 +49,7 @@ Configure the global variables
     # Globals
     rg_region=westus2
     rg_name=rg_example_$rg_region
-    
+
     # Core VNet
     vnet_core=vnet-core-$rg_region
     vnet_core_prefix='10.0.0.0/16'
@@ -97,11 +97,13 @@ Install dependencies and configure ``local.env``.
     # Replace settings in local.env
     cp local.env.example local.env
 
-Install locally for development.
+Install locally for development and enable pre-commit scripts.
 
 .. code-block:: bash
 
     pip install --editable .
+
+    pre-commit install
 
 Style Guidelines
 ----------------
@@ -157,7 +159,7 @@ Now that you have all test dependencies installed, you can run tests on the proj
     pylint main.py boilerplate
     rstcheck README.rst
     pydocstyle main.py boilerplate
-    
+
     python -m pytest tests
     python -m pytest --cov-report term-missing --cov=boilerplate tests/
 
@@ -176,7 +178,7 @@ Run Docker Image locally
     # Run interactive with environment variables
     docker run --rm -it --env-file local.env python_boilerplate:latest
 
-    #If you want to see STDOUT use 
+    #If you want to see STDOUT use
     docker run --rm -a STDOUT python_boilerplate:latest
 
 Tag for remote registry
@@ -236,11 +238,9 @@ Upgrade to the latest version of setuptools and create package and test
     python -m pip install --upgrade pip
     python -m pip install --upgrade build
 
-    # Install it formally
+    # Install it formally and build
     pip uninstall boilerplate
-    pip install .
-
-    python -m build --no-isolation
+    python -m build
 
     # Distribute
     pip wheel .
