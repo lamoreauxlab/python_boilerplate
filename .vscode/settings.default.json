@@ -1,9 +1,21 @@
 {
-    "esbonio.sphinx.confDir": "${workspaceFolder}",
-    "esbonio.sphinx.srcDir": "${workspaceFolder}",
+    // Please keep this file in sync with settings in ./.devcontainer/devcontainer.json
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "files.trimTrailingWhitespace": true,
     "python.formatting.provider": "black",
-    // https://code.visualstudio.com/docs/python/testing#_pytest-configuration-settings
-    "python.testing.pytestEnabled": false,
-    "python.envFile": "${workspaceFolder}/local.env",
-    "python.linting.banditEnabled": true
-}
+    "shellcheck.useWorkspaceRootAsCwd": true,
+    "terminal.integrated.profiles.linux": {
+      "zsh": {
+        "path": "/usr/bin/zsh"
+      }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "[jsonc]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+  }

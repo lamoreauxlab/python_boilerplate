@@ -37,13 +37,14 @@ repos:
             - '--configfile=pyproject.toml'
           additional_dependencies: [ toml ]
 
-    - repo: 'https://github.com/myint/rstcheck'
-      rev: 3f929574
-      hooks:
-        - id: rstcheck
-          args:
-          - '--config=pyproject.toml'
-          additional_dependencies: [ toml ]
+    # - repo: https://github.com/rstcheck/rstcheck
+    #   # rev: 445861c31d8134562e723d77115721038de2e687 # frozen: v6.2.0
+    #   rev: v6.1.2
+    #   hooks:
+    #     - id: rstcheck
+    #       additional_dependencies: [ toml ]
+    #       args: ["--config", "pyproject.toml"]
+
     - repo: https://github.com/pycqa/pydocstyle
       rev: 6.1.1
       hooks:
@@ -52,7 +53,31 @@ repos:
     - repo: 'https://github.com/pre-commit/pre-commit-hooks'
       rev: v4.1.0
       hooks:
+        - id: check-docstring-first
+        - id: check-shebang-scripts-are-executable
+        - id: check-toml
         - id: check-yaml
           args: [--unsafe]
         - id: end-of-file-fixer
+        - id: fix-byte-order-marker
+        - id: mixed-line-ending
         - id: trailing-whitespace
+    - repo: local
+      hooks:
+        - id: shellcheck
+          name: shellcheck
+          entry: script/pre_commit_shellcheck.sh
+          language: script
+          exclude_types: [json, sql, toml, yaml]
+          files: ^(script|iac)/.+sh$
+        - id: rstcheck
+          name: rstcheck
+          entry: script/pre_commit_rstcheck.sh
+          language: script
+          files: ^.+rst$
+        - id: pylint
+          name: pylint
+          entry: script/run_in_env.sh pylint -j 0
+          language: script
+          types: [python]
+          files: ^functions/.+\.py$

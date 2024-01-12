@@ -32,8 +32,6 @@ Best practices
 
 The project uses the popular `flat-layout <https://setuptools.pypa.io/en/latest/userguide/package_discovery.html#flat-layout>`_ to organize packages and modules.
 
-
-
 Setup
 ======
 
@@ -66,10 +64,28 @@ Configure the global variables
 Development
 ===========
 
-Setup your dev environment by creating a virtual environment
+You'll need to set up a development environment if you want to develop a new feature or fix issues. The project uses a docker based devcontainer to ensure a consistent development environment.
+- Open the project in VSCode and it will prompt you to open the project in a devcontainer. This will have all the required tools installed and configured.
 
-.. code-block:: bash
+Setup local dev environment
+---------------------------
 
+If you want to develop outside of a docker devcontainer you can use the following commands to setup your environment.
+
+* Install Python
+* Install Azure CLI
+* Configure linting and formatting tools
+
+... code-block:: bash
+    # Configure the environment variables. Copy example.env to .env and update the values
+    cp example.env .env
+
+    # load .env vars
+    # [ ! -f .env ] || export $(grep -v '^#' .env | xargs)
+    # or this version allows variable substitution and quoted long values
+    # [ -f .env ] && while IFS= read -r line; do [[ $line =~ ^[^#]*= ]] && eval "export $line"; done < .env
+
+    # Create and activate a python virtual environment
     # Windows
     # virtualenv \path\to\.venv -p path\to\specific_version_python.exe
     # C:\Users\!Admin\AppData\Local\Programs\Python\Python310\python.exe -m venv .venv
@@ -85,25 +101,17 @@ Setup your dev environment by creating a virtual environment
     # Update pip
     python -m pip install --upgrade pip
 
-    deactivate
-
-Install dependencies and configure ``local.env``.
-
-.. code-block:: bash
-
     # Install dependencies
     pip install -r requirements_dev.txt
 
-    # Replace settings in local.env
-    cp local.env.example local.env
+    # Configure linting and formatting tools
+    sudo apt-get update
+    sudo apt-get install -y shellcheck
+    pre-commit install
 
-Install locally for development and enable pre-commit scripts.
-
-.. code-block:: bash
-
+    # Install the package locally
     pip install --editable .
 
-    pre-commit install
 
 Style Guidelines
 ----------------
@@ -138,28 +146,26 @@ One exception is for logging which uses the percentage formatting. This is to av
 
     _LOGGER.info("Can't connect to the webservice %s at %s", string1, string2)
 
-
 Testing
 --------
-You'll need to install the test dependencies and project into your Python environment:
+Ideally, all code is checked to verify the following:
+
+All the unit tests pass All code passes the checks from the linting tools To run the linters, run the following commands:
 
 .. code-block:: bash
 
-    pip3 install -r requirements_dev.txt
-    pip install --editable .
+    # Use pre-commit scripts to run all linting
+    pre-commit run --all-files
 
-Now that you have all test dependencies installed, you can run tests on the project:
+    # Run a specific linter via pre-commit
+    pre-commit run --all-files codespell
 
-.. code-block:: bash
-
-    isort .
-    codespell  --skip="./.*,*.csv,*.json,*.pyc,./docs/_build/*,./htmlcov/*"
-    black main.py boilerplate
-    flake8 main.py boilerplate
-    pylint main.py boilerplate
+    # Run linters outside of pre-commit
+    codespell .
+    shellcheck -x ./script/*.sh
     rstcheck README.rst
-    pydocstyle main.py boilerplate
 
+    # Run unit tests
     python -m pytest tests
     python -m pytest --cov-report term-missing --cov=boilerplate tests/
 
@@ -257,7 +263,6 @@ Check that package looks ok. After testing, upload to the main repository
 .. code-block:: bash
 
     python -m twine upload dist/*
-
 
 References
 ==========
