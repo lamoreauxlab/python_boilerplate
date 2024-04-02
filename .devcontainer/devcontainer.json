@@ -48,5 +48,5 @@
       "memory": "8gb",
       "storage": "32gb"
     },
-    "postCreateCommand": "pre-commit install && pre-commit run --all-files && git config diff.wsErrorHighlight all"
+    "postCreateCommand": "git config diff.wsErrorHighlight all && pre-commit install && pre-commit run --all-files"
   }

@@ -1,4 +1,5 @@
 """Test main functions."""
+
 from boilerplate import __version__ as vers
 
 

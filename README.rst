@@ -76,7 +76,8 @@ If you want to develop outside of a docker devcontainer you can use the followin
 * Install Azure CLI
 * Configure linting and formatting tools
 
-... code-block:: bash
+.. code-block:: bash
+
     # Configure the environment variables. Copy example.env to .env and update the values
     cp example.env .env
 

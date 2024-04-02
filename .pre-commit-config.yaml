@@ -14,7 +14,7 @@ repos:
             - csv
             - json
     - repo: 'https://github.com/psf/black'
-      rev: 22.3.0
+      rev: 24.3.0
       hooks:
         - id: black
           args:
@@ -29,21 +29,14 @@ repos:
             - pydocstyle==6.1.1
           files: ^main.py|(boilerplate|tests)\/.+\.py$
     - repo: 'https://github.com/PyCQA/bandit'
-      rev: 1.7.4
+      rev: 1.7.8
       hooks:
         - id: bandit
           args:
             - '--quiet'
+            - '--format=custom'
             - '--configfile=pyproject.toml'
-          additional_dependencies: [ toml ]
-
-    # - repo: https://github.com/rstcheck/rstcheck
-    #   # rev: 445861c31d8134562e723d77115721038de2e687 # frozen: v6.2.0
-    #   rev: v6.1.2
-    #   hooks:
-    #     - id: rstcheck
-    #       additional_dependencies: [ toml ]
-    #       args: ["--config", "pyproject.toml"]
+          additional_dependencies: [".[toml]"]
 
     - repo: https://github.com/pycqa/pydocstyle
       rev: 6.1.1
