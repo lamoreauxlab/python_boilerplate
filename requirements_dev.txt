@@ -11,6 +11,6 @@ pydocstyle==6.3.0
 pylint==3.0.3
 pytest-cov==4.1.0
 pytest==7.4.4
-rstcheck==6.2.0
+rstcheck==6.2.1
 Sphinx==7.2.6
 tomli==2.0.1
