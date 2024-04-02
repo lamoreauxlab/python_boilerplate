@@ -89,12 +89,12 @@ If you want to develop outside of a docker devcontainer you can use the followin
     # Create and activate a python virtual environment
     # Windows
     # virtualenv \path\to\.venv -p path\to\specific_version_python.exe
-    # C:\Users\!Admin\AppData\Local\Programs\Python\Python310\python.exe -m venv .venv
+    # C:\Users\!Admin\AppData\Local\Programs\Python\Python312\python.exe -m venv .venv
     # .venv\scripts\activate
 
     # Linux
-    # virtualenv .venv /usr/local/bin/python3.10
-    # python3.10 -m venv .venv
+    # virtualenv .venv /usr/local/bin/python3.12
+    # python3.12 -m venv .venv
     # python3 -m venv .venv
     python3 -m venv .venv
     source .venv/bin/activate
