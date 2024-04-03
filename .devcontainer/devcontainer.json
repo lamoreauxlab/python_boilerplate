@@ -3,7 +3,11 @@
       "dockerfile": "Dockerfile",
       "context": ".."
     },
-    "features": {},
+    "features": {
+      "ghcr.io/devcontainers/features/azure-cli:1": {
+        "installBicep": true
+      }
+    },
     "customizations": {
       "vscode": {
         "extensions": [
