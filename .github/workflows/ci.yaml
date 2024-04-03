@@ -226,8 +226,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     needs:
-      - info
-      - linting
+      - pytest
     steps:
       - name: Check out code from GitHub
         uses: actions/checkout@v4.1.1
