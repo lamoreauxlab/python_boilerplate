@@ -3,8 +3,7 @@ Python Boilerplate
 ******************
 
 .. image:: https://img.shields.io/github/actions/workflow/status/lamoreauxlab/python_boilerplate/ci.yaml?branch=main
-   :target: https://github.com/lamoreauxlab/python_boilerplate/actions/workflows/ci.yml
-   :alt: CI Build Status
+   :alt: GitHub Actions Workflow Status
 
 .. image:: https://coveralls.io/repos/github/lamoreauxlab/python_boilerplate/badge.svg?branch=main
     :target: https://coveralls.io/github/lamoreauxlab/python_boilerplate?branch=main
