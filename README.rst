@@ -2,6 +2,14 @@
 Python Boilerplate
 ******************
 
+.. image:: https://img.shields.io/github/actions/workflow/status/lamoreauxlab/python_boilerplate/ci.yaml?branch=main
+   :target: https://github.com/lamoreauxlab/srpenergy-api-client-python/actions/workflows/ci.yml
+   :alt: CI Build Status
+
+.. image:: https://coveralls.io/repos/github/lamoreauxlab/python_boilerplate/badge.svg?branch=main
+    :target: https://coveralls.io/github/lamoreauxlab/python_boilerplate?branch=main
+    :alt: Coverage Status
+
 This project as a starting point with common python best practices like:
 
 * README.md project overview
